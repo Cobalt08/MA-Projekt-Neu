@@ -497,7 +497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 49b611e658efbf443b686a4036f74fe3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -659,7 +659,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a3983c59ebf804b4abba687bd7c9e92f,
+      objectReference: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f,
         type: 3}
     - target: {fileID: 8971347259032571471, guid: 1589095c4d5c974498f64a320acf1df7,
         type: 3}
@@ -845,7 +845,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.793078, y: 1.3308156, z: 21.848686}
+  m_LocalPosition: {x: -17.69592, y: 0.96081567, z: 21.848686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1996682071}
@@ -8669,6 +8669,21 @@ CircleCollider2D:
   m_Offset: {x: -0.66, y: -2.19}
   serializedVersion: 2
   m_Radius: 0.54
+--- !u!114 &1298557865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298557863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b823dd62e4b211443bd8a77c4936336c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 770713607960353533, guid: ff7d7356668d733429f438f675803fc8,
+    type: 3}
+  shootingRate: 2
 --- !u!4 &1396391028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6442811924846095285, guid: c4978433434f1d94c9356db2e40aa58a,
@@ -9018,7 +9033,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c03c72978d15ecb4d91060d3a10d14f0,
+      objectReference: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1589095c4d5c974498f64a320acf1df7, type: 3}
@@ -9058,7 +9073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 6332797737553560296, guid: fd4057e966fff9d469bef8811759fd8f,
     type: 3}
-  shootingRate: 0.25
+  shootingRate: 10
   rollingLeft: {x: -1, y: 0}
   rollingRight: {x: 1, y: 0}
 --- !u!114 &1699686314
@@ -9575,7 +9590,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: eb5f6e2757c821940b69cf1456f7865a,
+      objectReference: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1589095c4d5c974498f64a320acf1df7, type: 3}

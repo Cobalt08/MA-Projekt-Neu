@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
     [SerializeField] bool activePlayer = true;
     public GameObject camera;
+    private float positiveDeadZone = 0.5f;
+    private float negativeDeadZone = -0.5f;
 
 
     //private float timer = 0;
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
         switchPlayerButton = FindObjectOfType<SwitchPlayerButton>();
         myattackbutton = FindObjectOfType<AttackButton>();
         mygrabbutton = FindObjectOfType<GrabButton>();
-        //weaponjoystick = GetComponent<Fixed Joystick 2>();
+        weaponjoystick = GameObject.Find("Fixed Joystick 2").GetComponent<Joystick>();
 
     }
 
@@ -181,6 +183,21 @@ public class Player : MonoBehaviour
             if (weapon != null)
             {
                 weapon.Attack();
+            }
+        }
+
+        //var horiz = Input.GetAxis("Horizontal");
+        //var vert = Input.GetAxis("Vertical");
+
+        float horiz = weaponjoystick.Horizontal;
+        float vert = weaponjoystick.Vertical;
+
+        if (horiz > this.positiveDeadZone | horiz < this.negativeDeadZone | vert > this.positiveDeadZone | vert < this.negativeDeadZone)
+        {
+            Weapon2 weapon2 = GetComponent<Weapon2>();
+            if (weapon2 != null)
+            {
+                weapon2.Attack(horiz, vert);
             }
         }
     }
