@@ -45,9 +45,11 @@ public class WeaponScript : MonoBehaviour
             Player player = GetComponent<Player>();
             if (player.facingRight)
             {
+                shotTransform.position += new Vector3(0.8f, 0, 0);
                 move.direction = this.rollingRight;
             } else
             {
+                shotTransform.position += new Vector3(-0.8f, 0, 0);
                 move.direction = this.rollingLeft;
             }
         }

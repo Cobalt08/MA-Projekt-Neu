@@ -36,6 +36,7 @@ public class Weapon2 : MonoBehaviour
             var shotTransform = Instantiate(shotPrefab) as Transform;
 
             shotTransform.position = transform.position;
+            shotTransform.position += new Vector3(0, 0.6f, 0);
 
             ProjectileMoveScript move = shotTransform.gameObject.GetComponent<ProjectileMoveScript>();
             move.direction = new Vector2(horiz, vert);
