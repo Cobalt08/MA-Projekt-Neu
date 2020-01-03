@@ -167,8 +167,9 @@ public class Player : MonoBehaviour
     private void Die() {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazard"))) {
             isAlive = false;
-            myAnimator.SetTrigger("Dying");
+            myAnimator.SetBool("IsDead", true);
             myRigidBody.velocity = deathKick;
+            //Invoke("DoSomething", 2);
             FindObjectOfType<GameSession>().ProcessPlayerDeath();
 
         }
