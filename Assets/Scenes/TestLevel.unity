@@ -451,8 +451,12 @@ GameObject:
   m_Component:
   - component: {fileID: 43610469}
   - component: {fileID: 43610470}
+  - component: {fileID: 43610474}
+  - component: {fileID: 43610473}
+  - component: {fileID: 43610472}
+  - component: {fileID: 43610471}
   m_Layer: 9
-  m_Name: Icebear
+  m_Name: Arc
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,6 +501,77 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &43610471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43610468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715f104b198586f4c9c8fb79dc1f3d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 3
+  jumpSpeed: 2
+  deathKick: {x: 25, y: 25}
+  activePlayer: 1
+  camera: {fileID: 640488415}
+  facingRight: 1
+--- !u!50 &43610472
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43610468}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &43610473
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43610468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.08, y: -1.19}
+  serializedVersion: 2
+  m_Radius: 0.51
+--- !u!70 &43610474
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43610468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.15, y: 0.57}
+  m_Size: {x: 2.02, y: 3.77}
+  m_Direction: 0
 --- !u!1 &46273128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,7 +1412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640488415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.793078, y: 1.3308156, z: 21.848686}
+  m_LocalPosition: {x: -2.7239213, y: 5.179816, z: 18.92974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1178793530}
@@ -1362,7 +1437,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1841191183}
+  m_Follow: {fileID: 43610469}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 7
@@ -8072,7 +8147,12 @@ PrefabInstance:
     - target: {fileID: 6442811924846095311, guid: c4978433434f1d94c9356db2e40aa58a,
         type: 3}
       propertyPath: m_Name
-      value: Arc
+      value: TestArc
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442811924846095311, guid: c4978433434f1d94c9356db2e40aa58a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6442811924846095285, guid: c4978433434f1d94c9356db2e40aa58a,
         type: 3}
@@ -9769,7 +9849,7 @@ MonoBehaviour:
   runSpeed: 3
   jumpSpeed: 2
   deathKick: {x: 25, y: 25}
-  activePlayer: 1
+  activePlayer: 0
   camera: {fileID: 694566692}
   facingRight: 1
 --- !u!50 &1599539344
