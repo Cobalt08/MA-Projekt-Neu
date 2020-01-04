@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeet = GetComponent<CircleCollider2D>();
-        myjoystick = FindObjectOfType<Joystick>();
+        myjoystick = GameObject.Find("Fixed Joystick").GetComponent<Joystick>();
         myjumpbutton = FindObjectOfType<JumpButton>();
         switchPlayerButton = FindObjectOfType<SwitchPlayerButton>();
         myattackbutton = FindObjectOfType<AttackButton>();
@@ -154,13 +154,13 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (myFeet.IsTouchingLayers(LayerMask.GetMask("Ground")) || myFeet.IsTouchingLayers(LayerMask.GetMask("Grabbable")))
         {
-            return;
+            myAnimator.SetBool("IsJumping", false);
         }
         else
         {
-            myAnimator.SetBool("IsJumping", false);
+            return;
         }
 
 
