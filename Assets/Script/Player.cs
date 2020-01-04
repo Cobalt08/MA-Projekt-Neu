@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     JumpButton myjumpbutton;
     SwitchPlayerButton switchPlayerButton;
     AttackButton myattackbutton;
-    GrabButton mygrabbutton;
+    //GrabButton mygrabbutton;
     Joystick weaponjoystick;
 
 
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         myjumpbutton = FindObjectOfType<JumpButton>();
         switchPlayerButton = FindObjectOfType<SwitchPlayerButton>();
         myattackbutton = FindObjectOfType<AttackButton>();
-        mygrabbutton = FindObjectOfType<GrabButton>();
+        //mygrabbutton = FindObjectOfType<GrabButton>();
         weaponjoystick = GameObject.Find("Fixed Joystick 2").GetComponent<Joystick>();
 
     }
@@ -109,13 +109,20 @@ public class Player : MonoBehaviour
         if (controlThrow > 0 && !facingRight)
         {
             // ... flip the player.
-            Flip();
+            //Flip();
+            // Switch the way the player is labelled as facing.
+            facingRight = !facingRight;
+           
+            transform.localScale = new Vector3(this.transform.localScale.x*-1, this.transform.localScale.y, this.transform.localScale.z);
         }
         // Otherwise if the input is moving the player left and the player is facing right...
         else if (controlThrow < 0 && facingRight)
         {
             // ... flip the player.
-            Flip();
+            //Flip();
+            // Switch the way the player is labelled as facing.
+            facingRight = !facingRight;
+            transform.localScale = new Vector3(this.transform.localScale.x * -1, this.transform.localScale.y, this.transform.localScale.z);
         }
 
     }
