@@ -144,6 +144,9 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   deathKick: {x: 25, y: 25}
+  activePlayer: 1
+  camera: {fileID: 0}
+  facingRight: 1
 --- !u!50 &6442811924846095284
 Rigidbody2D:
   serializedVersion: 4
