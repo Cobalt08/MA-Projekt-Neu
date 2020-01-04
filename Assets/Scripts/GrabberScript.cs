@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class grabberscript : MonoBehaviour
+public class GrabberScript : MonoBehaviour
 {
 
 	public bool grabbed;

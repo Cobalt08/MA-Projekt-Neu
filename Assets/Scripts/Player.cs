@@ -226,6 +226,15 @@ public class Player : MonoBehaviour
 
     private void Grab()
     {
+        if (activePlayer == true)
+        {
+            this.GetComponent<GrabberScript>().gameObject.SetActive(true);
+        }
+        if (activePlayer == false)
+        {
+            this.GetComponent<GrabberScript>().gameObject.SetActive(false);
+        }
+      
     }
 
 }
