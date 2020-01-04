@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         //for offline testing
         if (activePlayer)
         {
-            AttackButtonHandling();
+            //AttackButtonHandling();
             Run();
             Jump();
             Die();
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
 
     }
 
-    private void AttackButtonHandling() {
+    /*private void AttackButtonHandling() {
         if (this.gameObject.name == "Tic") {
             weaponjoystick.gameObject.SetActive(true);
             myattackbutton.gameObject.SetActive(false);
@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
         }
 
     }
+    */
 
     private void Run()
     {

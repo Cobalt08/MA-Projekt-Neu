@@ -456,6 +456,7 @@ GameObject:
   - component: {fileID: 43610472}
   - component: {fileID: 43610471}
   - component: {fileID: 43610475}
+  - component: {fileID: 43610476}
   m_Layer: 9
   m_Name: Arc
   m_TagString: Player
@@ -593,6 +594,23 @@ MonoBehaviour:
   notgrabbed:
     serializedVersion: 2
     m_Bits: 5943
+--- !u!114 &43610476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43610468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6401d94dd6c5a4f82ade16528fbd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPrefab: {fileID: 6332797737553560296, guid: fd4057e966fff9d469bef8811759fd8f,
+    type: 3}
+  shootingRate: 10
+  rollingLeft: {x: -1, y: 0}
+  rollingRight: {x: 1, y: 0}
 --- !u!1 &46273128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5259213, y: 4.2308154, z: 21.489248}
+  m_LocalPosition: {x: 14.904079, y: 2.1608157, z: 18.92974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1996682071}
