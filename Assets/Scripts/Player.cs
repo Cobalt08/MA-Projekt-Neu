@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
 
         if (!isAlive) { return; }
 
+            Grab();
         //for offline testing
         if (activePlayer)
         {
@@ -78,7 +79,6 @@ public class Player : MonoBehaviour
             Jump();
             Die();
             Attack();
-            Grab();
         }
     }
 
@@ -226,15 +226,7 @@ public class Player : MonoBehaviour
 
     private void Grab()
     {
-        if (activePlayer == true)
-        {
-            this.GetComponent<GrabberScript>().gameObject.SetActive(true);
-        }
-        if (activePlayer == false)
-        {
-            this.GetComponent<GrabberScript>().gameObject.SetActive(false);
-        }
-      
+        this.GetComponent<GrabberScript>().enabled = activePlayer;
     }
 
 }
