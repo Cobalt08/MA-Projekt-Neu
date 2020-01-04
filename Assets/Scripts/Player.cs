@@ -10,13 +10,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] float runSpeed = 3f;
     [SerializeField] float jumpSpeed = 5f;
-    //[SerializeField] float fallMultiplier = 2.5f;
-    //[SerializeField] float lowJumpMultiplier = 2f;
+    [SerializeField] float fallMultiplier = 2.5f;
+    [SerializeField] float lowJumpMultiplier = 2f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
     [SerializeField] bool activePlayer = true;
     public GameObject camera;
     private float positiveDeadZone = 0.5f;
     private float negativeDeadZone = -0.5f;
+    private bool canJump = true;
 
 
     //private float timer = 0;
@@ -164,15 +165,17 @@ public class Player : MonoBehaviour
 
 
 
-        if (myjumpbutton.Pressed == true)
+        if (myjumpbutton.Pressed == true && canJump)
         {
+            canJump = false;
+            StartCoroutine(ExampleCoroutine());
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
             myAnimator.SetBool("IsJumping", true);
         }
 
 
-        /*if (myRigidBody.velocity.y < 0)
+        if (myRigidBody.velocity.y < 0)
         {
             myRigidBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
@@ -180,10 +183,16 @@ public class Player : MonoBehaviour
         {
             myRigidBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-        */
 
 
     }
+
+    IEnumerator ExampleCoroutine()
+    {
+        yield return new WaitForSeconds(0.3f);
+        canJump = true;
+    }
+
 
     private void Die() {
         if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazard"))) {
