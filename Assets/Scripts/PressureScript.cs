@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PressureScript : MonoBehaviour
 {
-    private bool activated = false;
+    /*private bool activated = false;
     public int mass = 3;
 
     public Sprite sprite1;
@@ -45,5 +45,5 @@ public class PressureScript : MonoBehaviour
             }
 
         
-    }
+    }*/
 }
