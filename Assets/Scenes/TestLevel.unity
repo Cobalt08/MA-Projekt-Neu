@@ -2460,6 +2460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fixed Joystick 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10309,6 +10314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShotButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8971347259032571464, guid: 1589095c4d5c974498f64a320acf1df7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8971347259032571465, guid: 1589095c4d5c974498f64a320acf1df7,
         type: 3}
