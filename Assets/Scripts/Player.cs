@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private float positiveDeadZone = 0.5f;
     private float negativeDeadZone = -0.5f;
     private bool canJump = true;
+    private bool wait = true;
 
 
     //private float timer = 0;
@@ -65,7 +66,12 @@ public class Player : MonoBehaviour
         //switch Player for testing only
         if (switchPlayerButton.Pressed)
         {
-            activePlayer = !activePlayer;
+            if (wait)
+            {
+                activePlayer = !activePlayer;
+                wait = false;
+                StartCoroutine(PlayerCoroutine());
+            }
         }
         CameraHandling();
 
@@ -81,6 +87,12 @@ public class Player : MonoBehaviour
             Die();
             Attack();
         }
+    }
+
+    IEnumerator PlayerCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        wait = true;
     }
 
     private void CameraHandling(){
@@ -168,7 +180,7 @@ public class Player : MonoBehaviour
         if (myjumpbutton.Pressed == true && canJump)
         {
             canJump = false;
-            StartCoroutine(ExampleCoroutine());
+            StartCoroutine(JumpCoroutine());
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
             myAnimator.SetBool("IsJumping", true);
@@ -187,7 +199,7 @@ public class Player : MonoBehaviour
 
     }
 
-    IEnumerator ExampleCoroutine()
+    IEnumerator JumpCoroutine()
     {
         yield return new WaitForSeconds(0.3f);
         canJump = true;
