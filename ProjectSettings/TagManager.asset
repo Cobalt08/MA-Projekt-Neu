@@ -63,6 +63,9 @@ TagManager:
   - name: Player
     uniqueID: 1675873591
     locked: 0
+  - name: Particle
+    uniqueID: 3709688533
+    locked: 0
   - name: Fg
     uniqueID: 647298905
     locked: 0
@@ -74,7 +77,4 @@ TagManager:
     locked: 0
   - name: Platform
     uniqueID: 1274004603
-    locked: 0
-  - name: Particle
-    uniqueID: 3709688533
     locked: 0
