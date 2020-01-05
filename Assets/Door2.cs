@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Door : MonoBehaviour
+public class Door2 : MonoBehaviour
 {
 
 
@@ -12,7 +12,8 @@ public class Door : MonoBehaviour
 	Animator anim;
 	public bool sticks;
 	public bool isActive = false;
-	public SwitchScriptVer3 Switch;
+	public Switch Switch0; 
+	public Switch Switch1;
 
 
 	// Use this for initialization
@@ -32,7 +33,7 @@ public class Door : MonoBehaviour
 
 	void Open()
 	{
-		if (Switch.isActive)
+		if (Switch1.isActive && Switch0.isActive)
 		{
 			anim.SetBool("goUp", true);
 			isActive = true;
@@ -52,7 +53,7 @@ public class Door : MonoBehaviour
 		if (sticks)
 			return;
 
-		if (!Switch.isActive)
+		if (!Switch1.isActive || !Switch0.isActive)
 		{
 			anim.SetBool("goUp", false);
 			isActive = false;
