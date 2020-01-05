@@ -23,7 +23,7 @@ TagManager:
   - Grabbable
   - Pickable
   - Switch
-  - 
+  - Door
   - 
   - 
   - 
@@ -68,4 +68,7 @@ TagManager:
     locked: 0
   - name: Switch
     uniqueID: 887891781
+    locked: 0
+  - name: Door
+    uniqueID: 2389478157
     locked: 0

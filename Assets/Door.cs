@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SwitchScriptVer3 : MonoBehaviour
+public class Door : MonoBehaviour
 {
 
 
@@ -12,25 +12,31 @@ public class SwitchScriptVer3 : MonoBehaviour
 	Animator anim;
 	public bool sticks;
 	public bool isActive = false;
+	public SwitchScriptVer3 Switch;
+
 
 	// Use this for initialization
 	void Start()
 	{
 		anim = GetComponent<Animator>();
+
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-
+		Open();
+		Close();
 	}
 
 
-	void OnTriggerStay2D()
+	void Open()
 	{
-		anim.SetBool("goDown", true);
-		isActive = true;
-
+		if (Switch.isActive)
+		{
+			anim.SetBool("goUp", true);
+			isActive = true;
+		}
 		/*foreach (DoorTrigger trigger in doorTrig)
 		{
 
@@ -41,14 +47,16 @@ public class SwitchScriptVer3 : MonoBehaviour
 
 	}
 
-	void OnTriggerExit2D()
+	void Close()
 	{
 		if (sticks)
 			return;
 
-		anim.SetBool("goDown", false);
-		isActive = false;
-
+		if (!Switch.isActive)
+		{
+			anim.SetBool("goUp", false);
+			isActive = false;
+		}
 		/*foreach (DoorTrigger trigger in doorTrig)
 		{
 
@@ -62,19 +70,6 @@ public class SwitchScriptVer3 : MonoBehaviour
 
 	}
 
-	void OnDrawGizmos()
-	{
-		Gizmos.color = Color.cyan;
-
-		/*foreach (DoorTrigger trigger in doorTrig)
-		{
-
-			Gizmos.DrawLine(transform.position, trigger.transform.position);
-
-		}*/
-
-
-	}
 
 
 }
