@@ -51,6 +51,15 @@ TagManager:
   - name: Deko
     uniqueID: 4052340289
     locked: 0
+  - name: Door
+    uniqueID: 2389478157
+    locked: 0
+  - name: Grabbable
+    uniqueID: 3931783617
+    locked: 0
+  - name: Switch
+    uniqueID: 887891781
+    locked: 0
   - name: Player
     uniqueID: 1675873591
     locked: 0
@@ -60,15 +69,9 @@ TagManager:
   - name: Water
     uniqueID: 2348032885
     locked: 0
-  - name: Grabbable
-    uniqueID: 3931783617
-    locked: 0
   - name: Pickable
     uniqueID: 290966455
     locked: 0
-  - name: Switch
-    uniqueID: 887891781
-    locked: 0
-  - name: Door
-    uniqueID: 2389478157
+  - name: Platform
+    uniqueID: 1274004603
     locked: 0
