@@ -9,7 +9,7 @@ public class Breakable : MonoBehaviour
     public GameObject explosion;
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag.Equals("BigProjectile"))
+        if (collision.gameObject.tag.Equals("BigProjectile"))
         {
             //Destroy(this.gameObject);
             Invoke("DestroyProjectile", lifeTime);
