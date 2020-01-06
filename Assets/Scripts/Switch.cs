@@ -59,6 +59,7 @@ public class Switch : MonoBehaviour
             {
                 foreach (GameObject obj in destroyObjects)
                 {
+
                     Destroy(obj);
                 }
                 destroyed = true;
