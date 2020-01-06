@@ -10,7 +10,7 @@ public class ShotScript : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, 10);
+        Destroy(gameObject, GameObject.Find("Arc").GetComponent<WeaponScript>().shootingRate);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
