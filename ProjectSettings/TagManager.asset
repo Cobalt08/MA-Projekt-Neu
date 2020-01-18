@@ -66,8 +66,14 @@ TagManager:
   - name: Particle
     uniqueID: 3709688533
     locked: 0
+  - name: Fg0
+    uniqueID: 1725958537
+    locked: 0
   - name: Fg
     uniqueID: 647298905
+    locked: 0
+  - name: Fg2
+    uniqueID: 2274972823
     locked: 0
   - name: Water
     uniqueID: 2348032885
