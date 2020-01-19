@@ -13,6 +13,10 @@ public class Door : MonoBehaviour
 	public bool sticks;
 	public bool isActive = false;
 	public Switch Switch;
+	public GameObject PortalTic;
+	public GameObject PlayerTic;
+	public GameObject PortalArc;
+	public GameObject PlayerArc;
 
 
 	// Use this for initialization
@@ -70,6 +74,19 @@ public class Door : MonoBehaviour
 
 	}
 
+	public void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (isActive) {
+			StartCoroutine(Teleport());
+		}
+	}
+
+	IEnumerator Teleport()
+	{
+		yield return new WaitForSeconds(0.5f);
+		PlayerTic.transform.position = new Vector2(PortalTic.transform.position.x, PortalTic.transform.position.y);
+		PlayerArc.transform.position = new Vector2(PortalArc.transform.position.x, PortalArc.transform.position.y);
+	}
 
 
 }
