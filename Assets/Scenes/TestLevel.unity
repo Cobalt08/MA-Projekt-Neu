@@ -5657,12 +5657,12 @@ PrefabInstance:
     - target: {fileID: 4516710786487985822, guid: c800b0ab9e27e994db4173baccbe93b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 227.88
+      value: 80.67
       objectReference: {fileID: 0}
     - target: {fileID: 4516710786487985822, guid: c800b0ab9e27e994db4173baccbe93b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -35.89
+      value: -36.18
       objectReference: {fileID: 0}
     - target: {fileID: 4516710786487985822, guid: c800b0ab9e27e994db4173baccbe93b3,
         type: 3}
@@ -6138,7 +6138,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6162,7 +6162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.807098, y: 11.392023, z: 21.48925}
+  m_LocalPosition: {x: -6.1259193, y: 4.5108147, z: 31.848686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1996682071}
