@@ -87,3 +87,6 @@ TagManager:
   - name: Deko2
     uniqueID: 3887934939
     locked: 0
+  - name: Fog
+    uniqueID: 3680884905
+    locked: 0
