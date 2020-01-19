@@ -84,3 +84,6 @@ TagManager:
   - name: Platform
     uniqueID: 1274004603
     locked: 0
+  - name: Deko2
+    uniqueID: 3887934939
+    locked: 0
