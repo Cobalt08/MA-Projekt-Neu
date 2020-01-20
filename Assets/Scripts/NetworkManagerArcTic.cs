@@ -8,7 +8,7 @@ public class NetworkManagerArcTic : NetworkManager
 {
     public Transform leftRacketSpawn;
     public Transform rightRacketSpawn;
-    GameObject ball;
+    GameObject chooseMenu;
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
@@ -20,10 +20,15 @@ public class NetworkManagerArcTic : NetworkManager
         // spawn ball if two players
         if (numPlayers == 2)
         {
-            GameObject.Find("ChooseMenu").GetComponent<MainMenu>().RpcChangeScene();
+            //GameObject.Find("ChooseMenu").GetComponent<MainMenu>().RpcChangeScene();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            //ball = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "Ball"));
-            // NetworkServer.Spawn(ball);
+            if(GameObject.Find("WaitMenu") != null)
+            {
+                GameObject.Find("WaitMenu").SetActive(false);
+            }
+            chooseMenu = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "ChooseMenu"));
+            NetworkServer.Spawn(chooseMenu);
+
         }
     }
 

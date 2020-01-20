@@ -13,6 +13,10 @@ public class MainMenu : NetworkBehaviour
     private void Awake()
     {
         networkManager = GameObject.Find("Network").GetComponent<NetworkManager>();
+        Debug.Log("awake");
+        this.transform.SetParent(GameObject.Find("CanvasMenu").transform);
+        this.transform.localPosition = Vector3.zero;
+        this.transform.localEulerAngles = Vector3.zero;
     }
 
     public void PlayGame()
@@ -43,11 +47,18 @@ public class MainMenu : NetworkBehaviour
         networkManager.StopHost();
     }
 
-    public void SwitchPlayers()
+    [ClientRpc]
+    public void RpcSwitchPlayers()
     {
         string temp = GameObject.Find("GameOwnerChar").GetComponent<TextMeshProUGUI>().text;
         GameObject.Find("GameOwnerChar").GetComponent<TextMeshProUGUI>().text = GameObject.Find("JointPlayerChar").GetComponent<TextMeshProUGUI>().text;
         GameObject.Find("JointPlayerChar").GetComponent<TextMeshProUGUI>().text = temp;
+    }
+
+    public void ChangeName(string name)
+    {
+        Debug.Log("change variable" + name);
+
     }
 
     [ClientRpc]
@@ -55,5 +66,6 @@ public class MainMenu : NetworkBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
 
 }
