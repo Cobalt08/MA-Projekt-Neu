@@ -57,11 +57,11 @@ TagManager:
   - name: Grabbable
     uniqueID: 3931783617
     locked: 0
-  - name: Switch
-    uniqueID: 887891781
-    locked: 0
   - name: Particle2
     uniqueID: 672894139
+    locked: 0
+  - name: Switch
+    uniqueID: 887891781
     locked: 0
   - name: Player
     uniqueID: 1675873591
