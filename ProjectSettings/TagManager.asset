@@ -63,8 +63,11 @@ TagManager:
   - name: Switch
     uniqueID: 887891781
     locked: 0
-  - name: Player
+  - name: PlayerArc
     uniqueID: 1675873591
+    locked: 0
+  - name: PlayerTic
+    uniqueID: 1801987203
     locked: 0
   - name: Particle
     uniqueID: 3709688533
