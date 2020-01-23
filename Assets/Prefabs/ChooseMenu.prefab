@@ -1355,7 +1355,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: -3399511604819900284}
-        m_MethodName: RpcChangeScene
+        m_MethodName: RpcPlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1440,6 +1440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  scenetoLoadName: TestLevel
 --- !u!114 &4770400525914028017
 MonoBehaviour:
   m_ObjectHideFlags: 0

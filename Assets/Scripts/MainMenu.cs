@@ -9,6 +9,7 @@ public class MainMenu : NetworkBehaviour
 {
 
     private NetworkManager networkManager;
+    public string scenetoLoadName;
 
     private void Awake()
     {
@@ -19,8 +20,15 @@ public class MainMenu : NetworkBehaviour
         this.transform.localEulerAngles = Vector3.zero;
     }
 
-    public void PlayGame()
+    [ClientRpc]
+    public void RpcPlayGame()
     {
+        networkManager.ServerChangeScene(scenetoLoadName);
+    }
+
+    public void PlayGameSolo()
+    {
+        networkManager.StopHost();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -60,12 +68,5 @@ public class MainMenu : NetworkBehaviour
         Debug.Log("change variable" + name);
 
     }
-
-    [ClientRpc]
-    public void RpcChangeScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
 
 }

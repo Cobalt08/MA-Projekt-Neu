@@ -6,17 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class NetworkManagerArcTic : NetworkManager
 {
-    public Transform leftRacketSpawn;
-    public Transform rightRacketSpawn;
+    public GameObject arc;
+    public GameObject tic;
     GameObject chooseMenu;
+    NetworkConnection hostConn;
+    NetworkConnection clientConn;
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
+        if(numPlayers == 1)
+        {
+            hostConn = conn;
+        }
+        else
+        {
+            clientConn = conn;
+        }
         // add player at correct spawn position
-        Transform start = numPlayers == 0 ? leftRacketSpawn : rightRacketSpawn;
-        GameObject player = Instantiate(playerPrefab, start.position, start.rotation);
+        GameObject player = Instantiate(playerPrefab);
         NetworkServer.AddPlayerForConnection(conn, player);
-
         // spawn ball if two players
         if (numPlayers == 2)
         {
@@ -40,6 +48,14 @@ public class NetworkManagerArcTic : NetworkManager
 
         // call base functionality (actually destroys the player)
         base.OnServerDisconnect(conn);
+    }
+
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        GameObject.Find("Arc").AddComponent<NetworkTransform>();
+        GameObject.Find("Tic").AddComponent<NetworkTransform>();
+        NetworkServer.ReplacePlayerForConnection(hostConn, GameObject.Find("Arc"));
+        NetworkServer.ReplacePlayerForConnection(clientConn, GameObject.Find("Tic"));
     }
 
 }
