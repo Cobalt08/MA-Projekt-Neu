@@ -4340,7 +4340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  scenetoLoadName: 
+  scenetoLoadName: TestLevel
 --- !u!114 &1649675320
 MonoBehaviour:
   m_ObjectHideFlags: 0

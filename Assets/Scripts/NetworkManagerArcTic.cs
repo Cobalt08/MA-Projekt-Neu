@@ -14,6 +14,9 @@ public class NetworkManagerArcTic : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
+        GameObject player = Instantiate(playerPrefab);
+        NetworkServer.AddPlayerForConnection(conn, player);
+
         if(numPlayers == 1)
         {
             hostConn = conn;
@@ -23,8 +26,6 @@ public class NetworkManagerArcTic : NetworkManager
             clientConn = conn;
         }
         // add player at correct spawn position
-        GameObject player = Instantiate(playerPrefab);
-        NetworkServer.AddPlayerForConnection(conn, player);
         // spawn ball if two players
         if (numPlayers == 2)
         {
