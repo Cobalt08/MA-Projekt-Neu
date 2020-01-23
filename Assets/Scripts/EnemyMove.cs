@@ -9,6 +9,7 @@ public class EnemyMove : MonoBehaviour
     public Sprite sprite1;
     public Sprite sprite2;
     public float theCooldown = 5f;
+    public int lives = 3;
 
     private Vector2 movement;
     private float cooldown;
@@ -29,7 +30,8 @@ public class EnemyMove : MonoBehaviour
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
-        } else
+        }
+        else
         {
             if (looksLeft)
             {
@@ -49,7 +51,8 @@ public class EnemyMove : MonoBehaviour
             movement = new Vector2(
                       speed.x * -1,
                       speed.y * 0);
-        } else
+        }
+        else
         {
             movement = new Vector2(
           speed.x * 1,
@@ -62,5 +65,22 @@ public class EnemyMove : MonoBehaviour
         if (rigidbodyComponent == null) rigidbodyComponent = GetComponent<Rigidbody2D>();
 
         rigidbodyComponent.velocity = movement;
+    }
+
+    void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        ProjectileMoveScript shot = otherCollider.gameObject.GetComponent<ProjectileMoveScript>();
+        if (shot != null)
+        {
+            this.lives -= 1;
+            if (lives == 0)
+            {
+                this.rigidbodyComponent.constraints = RigidbodyConstraints2D.None;
+                PolygonCollider2D p = GetComponent<PolygonCollider2D>();
+                p.isTrigger = false;
+                Destroy(this);
+                Destroy(gameObject, 3);
+            }
+        }
     }
 }
