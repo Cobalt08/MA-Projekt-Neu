@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] float lowJumpMultiplier = 2f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
     [SerializeField] bool activePlayer = true;
+    [SerializeField] bool multiplayer = false;
     public GameObject camera;
     private float positiveDeadZone = 0.5f;
     private float negativeDeadZone = -0.5f;
@@ -46,47 +47,57 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        facingRight = true;
-        myRigidBody = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
-        myBodyCollider = GetComponent<CapsuleCollider2D>();
-        myFeet = GetComponent<CircleCollider2D>();
-        myjoystick = GameObject.Find("Fixed Joystick").GetComponent<Joystick>();
-        myjumpbutton = GameObject.Find("JumpButton").GetComponent<JumpButton>();
-        switchPlayerButton = FindObjectOfType<SwitchPlayerButton>();
-        myattackbutton = FindObjectOfType<AttackButton>();
-        //mygrabbutton = FindObjectOfType<GrabButton>();
-        weaponjoystick = GameObject.Find("Fixed Joystick 2").GetComponent<Joystick>();
-
+        if (!multiplayer) { 
+            facingRight = true;
+            myRigidBody = GetComponent<Rigidbody2D>();
+            myAnimator = GetComponent<Animator>();
+            myBodyCollider = GetComponent<CapsuleCollider2D>();
+            myFeet = GetComponent<CircleCollider2D>();
+            myjoystick = GameObject.Find("Fixed Joystick").GetComponent<Joystick>();
+            myjumpbutton = GameObject.Find("JumpButton").GetComponent<JumpButton>();
+            switchPlayerButton = FindObjectOfType<SwitchPlayerButton>();
+            myattackbutton = FindObjectOfType<AttackButton>();
+            //mygrabbutton = FindObjectOfType<GrabButton>();
+            weaponjoystick = GameObject.Find("Fixed Joystick 2").GetComponent<Joystick>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //switch Player for testing only
-        if (switchPlayerButton.Pressed)
+        if (!multiplayer)
         {
-            if (wait)
+            //switch Player for testing only
+            if (switchPlayerButton.Pressed)
             {
-                activePlayer = !activePlayer;
-                wait = false;
-                StartCoroutine(PlayerCoroutine());
+                if (wait)
+                {
+                    activePlayer = !activePlayer;
+                    wait = false;
+                    StartCoroutine(PlayerCoroutine());
+                }
             }
-        }
-        CameraHandling();
+            CameraHandling();
 
-        if (!isAlive) { return; }
+            if (!isAlive) { return; }
 
             Grab();
-        //for offline testing
-        if (activePlayer)
-        {
-            AttackButtonHandling();
-            Run();
-            Jump();
-            Die();
-            Attack();
+            //for offline testing
+            if (activePlayer)
+            {
+                AttackButtonHandling();
+                Run();
+                Jump();
+                Die();
+                Attack();
+            }
         }
+    }
+
+    public void setWhenSwitchSceneInMultiplayer()
+    {
+        multiplayer = false;
+        Start();
     }
 
     IEnumerator PlayerCoroutine()
@@ -106,14 +117,18 @@ public class Player : MonoBehaviour
     }
 
     private void AttackButtonHandling() {
-        if (this.gameObject.name == "Tic") {
-            weaponjoystick.gameObject.SetActive(true);
-            myattackbutton.gameObject.SetActive(false);
-        }
-        if (this.gameObject.name == "Arc")
+        if (GameObject.Find("MultiplayerArc(Clone)") == null)
         {
-            weaponjoystick.gameObject.SetActive(false);
-            myattackbutton.gameObject.SetActive(true);
+            if (this.gameObject.name == "Tic")
+            {
+                weaponjoystick.gameObject.SetActive(true);
+                myattackbutton.gameObject.SetActive(false);
+            }
+            if (this.gameObject.name == "Arc")
+            {
+                weaponjoystick.gameObject.SetActive(false);
+                myattackbutton.gameObject.SetActive(true);
+            }
         }
 
     }

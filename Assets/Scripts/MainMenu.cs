@@ -23,7 +23,13 @@ public class MainMenu : NetworkBehaviour
     [ClientRpc]
     public void RpcPlayGame()
     {
-        networkManager.ServerChangeScene(scenetoLoadName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject.Find("SceneChanger(Clone)").GetComponent<ChangeScene>().RpcSetupScene();
     }
 
     public void PlayGameSolo()

@@ -4134,14 +4134,14 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 4
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 3124802573666292594, guid: 40898fb9c839bb94da86de5c56035b2a,
+  playerPrefab: {fileID: 9092256276593537825, guid: fd500804b62d56a498a6cda0dbfdad8f,
     type: 3}
   autoCreatePlayer: 1
-  playerSpawnMethod: 0
+  playerSpawnMethod: 1
   spawnPrefabs:
   - {fileID: 2483721214213784558, guid: 31813c0dcedbb094398597c257c353b1, type: 3}
-  arc: {fileID: 0}
-  tic: {fileID: 0}
+  arc: {fileID: 2229252653729491034, guid: 4913a345de1c1a540b62eeb421d89b02, type: 3}
+  tic: {fileID: 301640015555111382, guid: b666d34e6ebd1944f922335b42bc8c08, type: 3}
 --- !u!4 &1542864531
 Transform:
   m_ObjectHideFlags: 0

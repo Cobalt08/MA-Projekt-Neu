@@ -14,49 +14,39 @@ public class NetworkManagerArcTic : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
-        GameObject player = Instantiate(playerPrefab);
-        NetworkServer.AddPlayerForConnection(conn, player);
 
-        if(numPlayers == 1)
+
+
+        if (numPlayers == 0)
         {
+            GameObject playerArc = Instantiate(arc);
+            DontDestroyOnLoad(playerArc);
+            NetworkServer.AddPlayerForConnection(conn, playerArc);
             hostConn = conn;
+
         }
         else
         {
+            GameObject playerTic = Instantiate(tic);
+            DontDestroyOnLoad(playerTic);
+            NetworkServer.AddPlayerForConnection(conn, playerTic);
             clientConn = conn;
+
         }
-        // add player at correct spawn position
-        // spawn ball if two players
+
+        // spawn choose menu if two players
         if (numPlayers == 2)
         {
-            //GameObject.Find("ChooseMenu").GetComponent<MainMenu>().RpcChangeScene();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            if(GameObject.Find("WaitMenu") != null)
-            {
-                GameObject.Find("WaitMenu").SetActive(false);
-            }
+            //This is the SceneChanger
+            GameObject sceneChanger = Instantiate(playerPrefab);
+            DontDestroyOnLoad(sceneChanger);
+            NetworkServer.Spawn(sceneChanger);
+
+            sceneChanger.GetComponent<ChangeScene>().RpcCloseWaitMenu();
+
             chooseMenu = Instantiate(spawnPrefabs.Find(prefab => prefab.name == "ChooseMenu"));
-            NetworkServer.Spawn(chooseMenu);
-
+            NetworkServer.Spawn(chooseMenu, clientConn);
         }
-    }
-
-    public override void OnServerDisconnect(NetworkConnection conn)
-    {
-        // destroy ball
-        //if (ball != null)
-        //    NetworkServer.Destroy(ball);
-
-        // call base functionality (actually destroys the player)
-        base.OnServerDisconnect(conn);
-    }
-
-    public override void OnServerSceneChanged(string sceneName)
-    {
-        GameObject.Find("Arc").AddComponent<NetworkTransform>();
-        GameObject.Find("Tic").AddComponent<NetworkTransform>();
-        NetworkServer.ReplacePlayerForConnection(hostConn, GameObject.Find("Arc"));
-        NetworkServer.ReplacePlayerForConnection(clientConn, GameObject.Find("Tic"));
     }
 
 }
