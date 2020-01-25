@@ -14,22 +14,15 @@ public class MainMenu : NetworkBehaviour
     private void Awake()
     {
         networkManager = GameObject.Find("Network").GetComponent<NetworkManager>();
-        Debug.Log("awake");
         this.transform.SetParent(GameObject.Find("CanvasMenu").transform);
         this.transform.localPosition = Vector3.zero;
         this.transform.localEulerAngles = Vector3.zero;
     }
 
-    [ClientRpc]
-    public void RpcPlayGame()
+    [Command]
+    public void CmdPlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.sceneLoaded += OnSceneLoaded;
-
-    }
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        GameObject.Find("SceneChanger(Clone)").GetComponent<ChangeScene>().RpcSetupScene();
+        networkManager.ServerChangeScene("TestLevel");
     }
 
     public void PlayGameSolo()
@@ -53,7 +46,6 @@ public class MainMenu : NetworkBehaviour
     {
         networkManager.networkAddress = GameObject.Find("IpAdressInput").GetComponent<Text>().text;
         networkManager.StartClient();
-        //switch to Choose Menu
     }
 
     public void StopHost()

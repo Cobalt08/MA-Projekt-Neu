@@ -4555,6 +4555,8 @@ MonoBehaviour:
   playerSpawnMethod: 1
   spawnPrefabs:
   - {fileID: 2483721214213784558, guid: 31813c0dcedbb094398597c257c353b1, type: 3}
+  - {fileID: 2229252653729491034, guid: 4913a345de1c1a540b62eeb421d89b02, type: 3}
+  - {fileID: 301640015555111382, guid: b666d34e6ebd1944f922335b42bc8c08, type: 3}
   arc: {fileID: 2229252653729491034, guid: 4913a345de1c1a540b62eeb421d89b02, type: 3}
   tic: {fileID: 301640015555111382, guid: b666d34e6ebd1944f922335b42bc8c08, type: 3}
 --- !u!4 &1542864531
@@ -4809,7 +4811,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1649675319}
-        m_MethodName: RpcPlayGame
+        m_MethodName: CmdPlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

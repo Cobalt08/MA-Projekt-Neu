@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             myFeet = GetComponent<CircleCollider2D>();
             myjoystick = GameObject.Find("Fixed Joystick").GetComponent<Joystick>();
             myjumpbutton = GameObject.Find("JumpButton").GetComponent<JumpButton>();
-            switchPlayerButton = FindObjectOfType<SwitchPlayerButton>();
+            switchPlayerButton = GameObject.Find("SwitchPlayerButton").GetComponent<SwitchPlayerButton>();
             myattackbutton = FindObjectOfType<AttackButton>();
             //mygrabbutton = FindObjectOfType<GrabButton>();
             weaponjoystick = GameObject.Find("Fixed Joystick 2").GetComponent<Joystick>();
