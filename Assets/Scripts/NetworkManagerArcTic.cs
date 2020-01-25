@@ -12,10 +12,10 @@ public class NetworkManagerArcTic : NetworkManager
     GameObject chooseMenu;
     NetworkConnection hostConn;
     NetworkConnection clientConn;
+    GameObject sceneChanger;
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
-
 
 
         if (numPlayers == 0)
@@ -41,7 +41,7 @@ public class NetworkManagerArcTic : NetworkManager
         if (numPlayers == 2)
         {
             //This is the SceneChanger
-            GameObject sceneChanger = Instantiate(playerPrefab);
+            sceneChanger = Instantiate(playerPrefab);
             DontDestroyOnLoad(sceneChanger);
             NetworkServer.Spawn(sceneChanger);
 
@@ -54,36 +54,50 @@ public class NetworkManagerArcTic : NetworkManager
 
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
+        
+        Transform spawnArc = GameObject.Find("Arc").transform;
+        Destroy(GameObject.Find("Arc"));
+
         print("Scene changed " + conn.connectionId);
+
         GameObject.Find("SwitchPlayerButton").transform.position = new Vector3(-1000, -1000, -1000);
 
+        if(ClientScene.localPlayer.isServer)
+        {
+            if (!ClientScene.ready) ClientScene.Ready(conn);
+            SetupArc(spawnArc.position);
+        }
+        else
+        {
+            //if (!ClientScene.ready) ClientScene.Ready(conn);
+            //SetupTic(spawnTic.position);
+        }
     }
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        GameObject switchPlayer = GameObject.Find("SwitchPlayerButton");
-        //SetupArc();
-        //SetupTic();
-        //switchPlayer.AddComponent<NetworkTransform>();
-        //NetworkServer.Spawn(switchPlayer);
-        //switchPlayer.transform.position = new Vector3(-1000, -1000, -1000);
-        print(sceneName);
-    }
-
-    public void RpcSetupScene()
-    {
-
-
-        GameObject.Find("SwitchPlayerButton").transform.position = new Vector3(-1000, -1000, -1000);
-
-    }
-
-    private void SetupTic()
-    {
         Transform spawnTic = GameObject.Find("Tic").transform;
-        GameObject TicM = GameObject.Find("MultiplayerTic(Clone)");
-        TicM.transform.position = spawnTic.position;
         Destroy(GameObject.Find("Tic"));
+        print(GameObject.Find("SceneChanger(Clone)"));
+        sceneChanger.GetComponent<ChangeScene>().TargetSetupTic(ClientScene.localPlayer.connectionToClient, spawnTic.position);
+    }
+
+    public override void OnStartClient()
+    {
+        print("Start client");
+        base.OnStartClient();
+    }
+    public override void OnStartHost()
+    {
+        print("Start host");
+        base.OnStartHost();
+    }
+
+    private void SetupTic(Vector3 position)
+    {
+        GameObject TicM = GameObject.Find("MultiplayerTic(Clone)");
+        TicM.GetComponent<Player>().activePlayer = true;
+        TicM.transform.position = position;
         TicM.GetComponent<Player>().camera = GameObject.Find("CM vcam2");
         GameObject.Find("CM vcam2").GetComponent<CinemachineVirtualCamera>().Follow = TicM.transform;
         TicM.GetComponent<Player>().setWhenSwitchSceneInMultiplayer();
@@ -94,16 +108,16 @@ public class NetworkManagerArcTic : NetworkManager
     }
 
 
-    private void SetupArc()
+    private void SetupArc(Vector3 position)
     {
-        Transform spawnArc = GameObject.Find("Arc").transform;
         GameObject ArcM = GameObject.Find("MultiplayerArc(Clone)");
-        ArcM.transform.position = spawnArc.position;
-        Destroy(GameObject.Find("Arc"));
+        ArcM.GetComponent<Player>().activePlayer = true;
+        ArcM.transform.position = position;
         ArcM.GetComponent<Player>().camera = GameObject.Find("CM vcam1");
         GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Follow = ArcM.transform;
         ArcM.GetComponent<Player>().setWhenSwitchSceneInMultiplayer();
         ArcM.GetComponent<GrabberScript>().setWhenSwitchSceneInMultiplayer();
-
+        Joystick weaponjoystick = GameObject.Find("Fixed Joystick 2").GetComponent<Joystick>();
+        weaponjoystick.gameObject.SetActive(false);
     }
 }

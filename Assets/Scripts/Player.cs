@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] float fallMultiplier = 2.5f;
     [SerializeField] float lowJumpMultiplier = 2f;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
-    [SerializeField] bool activePlayer = true;
+    public bool activePlayer = true;
     [SerializeField] bool multiplayer = false;
     public GameObject camera;
     private float positiveDeadZone = 0.5f;

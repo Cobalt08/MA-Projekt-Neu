@@ -9,17 +9,19 @@ public class ShotScript : MonoBehaviour
 {
 
     public GameObject explosion;
+    private GameObject arc;
 
     void Start()
     {
         //Destroy BigProjectile after cooldown is refreshed
+        arc = GameObject.Find("Arc") == null ? GameObject.Find("MultiplayerArc(Clone)")  : GameObject.Find("Arc");
         StartCoroutine(ProjectileCoroutine());
-        Destroy(gameObject, GameObject.Find("Arc").GetComponent<WeaponScript>().shootingRate);
+        Destroy(gameObject, arc.GetComponent<WeaponScript>().shootingRate);
     }
 
     IEnumerator ProjectileCoroutine()
     {
-        yield return new WaitForSeconds(GameObject.Find("Arc").GetComponent<WeaponScript>().shootingRate -0.1f);
+        yield return new WaitForSeconds(arc.GetComponent<WeaponScript>().shootingRate -0.1f);
         Instantiate(explosion, transform.position, Quaternion.identity);
     }
 
