@@ -18,6 +18,7 @@ public class BossWeaponSmall : MonoBehaviour
 
     void Start()
     {
+        shootCooldown = 1.5f;
         target1 = GameObject.Find("Arc").transform;
         target2 = GameObject.Find("Tic").transform;
     }

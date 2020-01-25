@@ -16,7 +16,7 @@ public class BossWeaponBig : MonoBehaviour
 
     void Start()
     {
-        shootCooldown = 3f;
+        shootCooldown = 4.5f;
     }
 
     void Update()
