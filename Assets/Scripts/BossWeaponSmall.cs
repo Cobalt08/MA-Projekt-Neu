@@ -8,7 +8,7 @@ using UnityEngine;
 public class BossWeaponSmall : MonoBehaviour
 {
     public Transform shotPrefab;
-    public float shootingRate = 6f;
+    //public float shootingRate = 6f;
 
     private float shootCooldown;
     private Transform target1;
@@ -18,11 +18,12 @@ public class BossWeaponSmall : MonoBehaviour
 
     void Start()
     {
-        shootCooldown = 1.5f;
+        //shootCooldown = 1.5f;
         target1 = GameObject.Find("Arc").transform;
         target2 = GameObject.Find("Tic").transform;
     }
 
+    /*
     void Update()
     {
         if (shootCooldown > 0)
@@ -34,10 +35,11 @@ public class BossWeaponSmall : MonoBehaviour
             Attack();
         }
     }
+    */
 
     public void Attack()
     {
-        shootCooldown = shootingRate;
+        //shootCooldown = shootingRate;
 
         var shotTransform = Instantiate(shotPrefab) as Transform;
 
@@ -47,12 +49,17 @@ public class BossWeaponSmall : MonoBehaviour
 
         shotTransform.position += new Vector3(-7, 2.5f, 0);
 
+        var tempVector = shotTransform.position;
+        tempVector.z = -2;
+        shotTransform.position = tempVector;
+
         if (targetSwitch)
         {
             targetVector = target1.position - transform.position;
             move.direction = targetVector;
             targetSwitch = false;
-        } else
+        }
+        else
         {
             targetVector = target2.position - transform.position;
             move.direction = targetVector;
