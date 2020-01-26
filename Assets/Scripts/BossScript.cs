@@ -10,14 +10,23 @@ public class BossScript : MonoBehaviour
 
     public int lives = 3;
     public float roaringRate = 6f;
+    public float shootingRate = 3f;
     public AudioClip roar;
 
     private float roarCooldown;
     private AudioSource source;
+    private float shootCooldown;
+    private BossWeaponBig weapon1;
+    private BossWeaponSmall weapon2;
+    private bool weaponSwitch;
 
     void Start()
     {
         source = GetComponent<AudioSource>();
+        weapon1 = GetComponent<BossWeaponBig>();
+        weapon2 = GetComponent<BossWeaponSmall>();
+        weaponSwitch = true;
+        roarCooldown = 1f;
     }
 
     void Update()
@@ -28,7 +37,27 @@ public class BossScript : MonoBehaviour
         }
         else
         {
-            Roar();
+            //Roar();
+        }
+
+        if (shootCooldown > 0)
+        {
+            shootCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            shootCooldown = shootingRate;
+
+            if (weaponSwitch)
+            {
+                weapon1.Attack();
+                weaponSwitch = false;
+            }
+            else
+            {
+                weapon2.Attack();
+                weaponSwitch = true;
+            }
         }
     }
 
