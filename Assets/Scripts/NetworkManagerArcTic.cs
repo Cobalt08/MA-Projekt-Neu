@@ -54,7 +54,7 @@ public class NetworkManagerArcTic : NetworkManager
 
     public override void OnClientSceneChanged(NetworkConnection conn)
     {
-        
+
         Transform spawnArc = GameObject.Find("Arc").transform;
         Destroy(GameObject.Find("Arc"));
 
@@ -76,10 +76,12 @@ public class NetworkManagerArcTic : NetworkManager
 
     public override void OnServerSceneChanged(string sceneName)
     {
+
+        print(clientConn.identity.gameObject.GetComponent<ChangeScene>());
+   
         Transform spawnTic = GameObject.Find("Tic").transform;
         Destroy(GameObject.Find("Tic"));
-        print(GameObject.Find("SceneChanger(Clone)"));
-        sceneChanger.GetComponent<ChangeScene>().TargetSetupTic(ClientScene.localPlayer.connectionToClient, spawnTic.position);
+        clientConn.identity.gameObject.GetComponent<ChangeScene>().TargetSetupTic(clientConn, spawnTic.position);
     }
 
     public override void OnStartClient()

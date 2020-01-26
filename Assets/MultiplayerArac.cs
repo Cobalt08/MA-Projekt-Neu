@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 
-public class Player : MonoBehaviour
-
+public class MultiplayerArac : MonoBehaviour
 {
 
     [SerializeField] float runSpeed = 3f;
@@ -47,7 +46,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!multiplayer) { 
+        if (!multiplayer)
+        {
             facingRight = true;
             myRigidBody = GetComponent<Rigidbody2D>();
             myAnimator = GetComponent<Animator>();
@@ -106,45 +106,22 @@ public class Player : MonoBehaviour
         wait = true;
     }
 
-    public void CameraHandling()
+    private void CameraHandling()
     {
         if (activePlayer == true)
         {
             camera.SetActive(true);
         }
-        if (activePlayer == false)
-        {
-            camera.SetActive(false);
-        }
-        //activate both for multiplayer
-        if ((this.gameObject.name == "Tic" || this.gameObject.name == "Arc") && GameObject.Find("MultiplayerArc(Clone)"))
-        {
-            camera.SetActive(true);
-        }
-    }
-
-    public void AttackButtonHandling() {
-
-            if (this.gameObject.name == "Tic" || this.gameObject.name == "MultiplayerTic(Clone)")
-            {
-                weaponjoystick.gameObject.SetActive(true);
-                myattackbutton.gameObject.SetActive(false);
-            }
-            if (this.gameObject.name == "Arc" || this.gameObject.name == "MultiplayerArc(Clone)")
-            {
-                weaponjoystick.gameObject.SetActive(false);
-                myattackbutton.gameObject.SetActive(true);
-            }
-            //activate both for multiplayer
-            if(this.gameObject.name == "Tic" && GameObject.Find("MultiplayerArc(Clone)"))
-            {
-            print("activate Buttons");
-                weaponjoystick.gameObject.SetActive(true);
-                myattackbutton.gameObject.SetActive(true);
-            }
 
     }
-    
+
+    private void AttackButtonHandling()
+    {
+            //weaponjoystick.gameObject.SetActive(false);
+            myattackbutton.gameObject.SetActive(true);
+
+    }
+
 
     private void Run()
     {
@@ -166,8 +143,8 @@ public class Player : MonoBehaviour
             //Flip();
             // Switch the way the player is labelled as facing.
             facingRight = !facingRight;
-           
-            transform.localScale = new Vector3(this.transform.localScale.x*-1, this.transform.localScale.y, this.transform.localScale.z);
+
+            transform.localScale = new Vector3(this.transform.localScale.x * -1, this.transform.localScale.y, this.transform.localScale.z);
         }
         // Otherwise if the input is moving the player left and the player is facing right...
         else if (controlThrow < 0 && facingRight)
@@ -233,8 +210,10 @@ public class Player : MonoBehaviour
     }
 
 
-    private void Die() {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazard"))) {
+    private void Die()
+    {
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazard")))
+        {
             isAlive = false;
             //myAnimator.SetBool("IsDead", true);
             myAnimator.SetTrigger("IsDeadTrigger");
@@ -247,24 +226,22 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (myattackbutton != null)
+
+        if (myattackbutton.Pressed == true)
         {
-            if (myattackbutton.Pressed == true)
+            WeaponScript weapon = GetComponent<WeaponScript>();
+            if (weapon != null)
             {
-                WeaponScript weapon = GetComponent<WeaponScript>();
-                if (weapon != null)
-                {
-                    weapon.Attack();
-                }
+                weapon.Attack();
             }
         }
 
         //var horiz = Input.GetAxis("Horizontal");
         //var vert = Input.GetAxis("Vertical");
-        if(weaponjoystick != null)
+        if (weaponjoystick != null)
         {
-                float horiz = weaponjoystick.Horizontal;
-                float vert = weaponjoystick.Vertical;
+            float horiz = weaponjoystick.Horizontal;
+            float vert = weaponjoystick.Vertical;
 
             if (horiz > this.positiveDeadZone | horiz < this.negativeDeadZone | vert > this.positiveDeadZone | vert < this.negativeDeadZone)
             {

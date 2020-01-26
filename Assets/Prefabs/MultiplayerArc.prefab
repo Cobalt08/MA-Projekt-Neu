@@ -286,13 +286,13 @@ GameObject:
   - component: {fileID: 2229252653729491028}
   - component: {fileID: 2229252653729491031}
   - component: {fileID: 2229252653729491030}
-  - component: {fileID: 2229252653729491033}
   - component: {fileID: 2229252653729491029}
   - component: {fileID: 2229252653729491026}
   - component: {fileID: 416781965585662254}
   - component: {fileID: 8328873636611623182}
   - component: {fileID: 4845265140543045682}
   - component: {fileID: 782375416183341292}
+  - component: {fileID: 8209593092353885505}
   m_Layer: 9
   m_Name: MultiplayerArc
   m_TagString: Player
@@ -308,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2229252653729491034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.2, y: -34.4, z: 67.129135}
+  m_LocalPosition: {x: 22.01, y: 1.329998, z: 67.129135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2229252653199882123}
@@ -393,27 +393,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2229252653729491033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2229252653729491034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 715f104b198586f4c9c8fb79dc1f3d7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runSpeed: 5
-  jumpSpeed: 8
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
-  deathKick: {x: 25, y: 25}
-  activePlayer: 1
-  multiplayer: 1
-  camera: {fileID: 0}
-  facingRight: 1
 --- !u!114 &2229252653729491029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +516,27 @@ MonoBehaviour:
   NoDelay: 1
   serverMaxMessageSize: 16384
   clientMaxMessageSize: 16384
+--- !u!114 &8209593092353885505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229252653729491034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715f104b198586f4c9c8fb79dc1f3d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 3
+  jumpSpeed: 5
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  deathKick: {x: 25, y: 25}
+  activePlayer: 1
+  multiplayer: 1
+  camera: {fileID: 0}
+  facingRight: 1
 --- !u!1 &2229252654005790534
 GameObject:
   m_ObjectHideFlags: 0
