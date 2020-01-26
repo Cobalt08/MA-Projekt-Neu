@@ -14,7 +14,13 @@ public class GameSession : MonoBehaviour
 
     [SerializeField] Text livesText;
     [SerializeField] Text scoreText;
-    
+
+    public GameObject PortalTic;
+    public GameObject PlayerTic;
+    public GameObject PortalArc;
+    public GameObject PlayerArc;
+
+
     private void Awake()
     {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -69,6 +75,8 @@ public class GameSession : MonoBehaviour
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = "Lives: " + playerLives.ToString();
+        PlayerTic.transform.position = new Vector2(PortalTic.transform.position.x, PortalTic.transform.position.y);
+        PlayerArc.transform.position = new Vector2(PortalArc.transform.position.x, PortalArc.transform.position.y);
     }
 
     private void ResetGameSession()
