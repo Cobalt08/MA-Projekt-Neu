@@ -54,9 +54,6 @@ TagManager:
   - name: Door
     uniqueID: 2389478157
     locked: 0
-  - name: Grabbable
-    uniqueID: 3931783617
-    locked: 0
   - name: Particle2
     uniqueID: 672894139
     locked: 0
@@ -72,6 +69,9 @@ TagManager:
   - name: Particle
     uniqueID: 3709688533
     locked: 0
+  - name: Water
+    uniqueID: 2348032885
+    locked: 0
   - name: Fg0
     uniqueID: 1725958537
     locked: 0
@@ -81,8 +81,8 @@ TagManager:
   - name: Fg2
     uniqueID: 2274972823
     locked: 0
-  - name: Water
-    uniqueID: 2348032885
+  - name: Grabbable
+    uniqueID: 3931783617
     locked: 0
   - name: Pickable
     uniqueID: 290966455
