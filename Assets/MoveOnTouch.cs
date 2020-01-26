@@ -8,7 +8,9 @@ public class MoveOnTouch : MonoBehaviour
     private bool moving;
 
     private void OnCollisonEnter2D(Collision2D collision) {
+        print(collision);
         if (collision.gameObject.tag == "Player"){
+            print("hello");
             moving = true;
             collision.collider.transform.SetParent(transform);
         }
