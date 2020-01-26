@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-
+	public bool isActive = false;
 	public GameObject PortalTic;
 	public GameObject PortalArc;
 	
@@ -12,6 +12,8 @@ public class Checkpoint : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
+			isActive = true;
+			FindObjectOfType<GameSession>().AudioCheck();
 			FindObjectOfType<GameSession>().PortalTic = this.PortalTic;
 			FindObjectOfType<GameSession>().PortalArc = this.PortalArc;
 		}

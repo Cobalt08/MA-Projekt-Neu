@@ -20,6 +20,22 @@ public class GameSession : MonoBehaviour
     public GameObject PortalArc;
     public GameObject PlayerArc;
 
+    public Checkpoint CheckPoint1;
+    public Checkpoint CheckPoint2;
+    public Checkpoint CheckPoint3;
+    public Checkpoint CheckPoint4;
+    public Checkpoint CheckPoint5;
+
+    public AudioSource Audio1;
+    public AudioSource Audio2;
+    public AudioSource Audio3;
+    public AudioSource Audio4;
+    public AudioSource Audio5;
+
+
+
+
+
 
     private void Awake()
     {
@@ -77,6 +93,52 @@ public class GameSession : MonoBehaviour
         livesText.text = "Lives: " + playerLives.ToString();
         PlayerTic.transform.position = new Vector2(PortalTic.transform.position.x, PortalTic.transform.position.y);
         PlayerArc.transform.position = new Vector2(PortalArc.transform.position.x, PortalArc.transform.position.y);
+    }
+
+    public void AudioCheck()
+    {
+        if (CheckPoint1.isActive)
+        {
+            Audio1.gameObject.SetActive(true);
+            Audio2.gameObject.SetActive(false);
+            Audio3.gameObject.SetActive(false); 
+            Audio4.gameObject.SetActive(false);
+            Audio5.gameObject.SetActive(false);
+        }
+
+        if (CheckPoint2.isActive)
+        {
+            Audio1.gameObject.SetActive(false);
+            Audio2.gameObject.SetActive(true);
+            Audio3.gameObject.SetActive(false);
+            Audio4.gameObject.SetActive(false);
+            Audio5.gameObject.SetActive(false);
+        }
+
+        if (CheckPoint3.isActive)
+        {
+            Audio1.gameObject.SetActive(false);
+            Audio2.gameObject.SetActive(false);
+            Audio3.gameObject.SetActive(true);
+            Audio4.gameObject.SetActive(false);
+            Audio5.gameObject.SetActive(false);
+        }
+        if (CheckPoint4.isActive)
+        {
+            Audio1.gameObject.SetActive(false);
+            Audio2.gameObject.SetActive(false);
+            Audio3.gameObject.SetActive(false);
+            Audio4.gameObject.SetActive(true);
+            Audio5.gameObject.SetActive(false);
+        }
+        if (CheckPoint5.isActive)
+        {
+            Audio1.gameObject.SetActive(false);
+            Audio2.gameObject.SetActive(false);
+            Audio3.gameObject.SetActive(false);
+            Audio4.gameObject.SetActive(true);
+            Audio5.gameObject.SetActive(false);
+        }
     }
 
     private void ResetGameSession()

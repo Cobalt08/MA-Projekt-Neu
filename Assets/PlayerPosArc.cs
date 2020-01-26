@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerPosArc : MonoBehaviour
 {
+    public GameObject PortalArc;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PortalArc= FindObjectOfType<GameSession>().PortalTic;
+        transform.position = new Vector2(PortalArc.transform.position.x, PortalArc.transform.position.y);
     }
 }
