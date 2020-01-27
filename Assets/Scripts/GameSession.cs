@@ -136,8 +136,8 @@ public class GameSession : MonoBehaviour
             Audio1.gameObject.SetActive(false);
             Audio2.gameObject.SetActive(false);
             Audio3.gameObject.SetActive(false);
-            Audio4.gameObject.SetActive(true);
-            Audio5.gameObject.SetActive(false);
+            Audio4.gameObject.SetActive(false);
+            Audio5.gameObject.SetActive(true);
         }
     }
 
