@@ -37,7 +37,7 @@ public class BossScript : MonoBehaviour
         }
         else
         {
-            //Roar();
+            Roar();
         }
 
         if (shootCooldown > 0)

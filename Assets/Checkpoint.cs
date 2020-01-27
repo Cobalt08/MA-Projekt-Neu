@@ -7,6 +7,7 @@ public class Checkpoint : MonoBehaviour
 	public bool isActive = false;
 	public GameObject PortalTic;
 	public GameObject PortalArc;
+    public GameObject Boss;
 	
 	public void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -16,7 +17,13 @@ public class Checkpoint : MonoBehaviour
 			FindObjectOfType<GameSession>().AudioCheck();
 			FindObjectOfType<GameSession>().PortalTic = this.PortalTic;
 			FindObjectOfType<GameSession>().PortalArc = this.PortalArc;
-		}
+            if(Boss != null)
+            {
+                Boss.SetActive(true);
+            }
+
+
+        }
 	}
 
 }

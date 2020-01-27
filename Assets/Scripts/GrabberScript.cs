@@ -14,6 +14,7 @@ public class GrabberScript : MonoBehaviour
     [SerializeField] bool multiplayer = false;
 
 
+
     // Use this for initialization
     void Start()
 	{
@@ -63,11 +64,13 @@ public class GrabberScript : MonoBehaviour
                     //throw
                 }
 
-
             }
 
             if (grabbed)
+            {
                 hit.collider.gameObject.transform.position = holdpoint.position;
+            
+            }
         }
 
 	}
